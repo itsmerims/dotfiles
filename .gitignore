@@ -1,0 +1,18 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+.idea/
+.vscode/
+*.tmp
+
+# Sensitive data / keys
+*.env
+*.env.*
+*.key
+*.pem
+id_rsa*
+*.pfx
+secrets/
+private/
