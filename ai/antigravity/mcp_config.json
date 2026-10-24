@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "antigravity-memory": {
+      "command": "antigravity-mem",
+      "args": [
+        "mcp-serve"
+      ],
+      "env": {
+        "ANTIGRAVITY_MEM_DB": "${userHome}/.antigravity-mem/memory.db",
+        "GEMINI_API_KEY": "${env:GEMINI_API_KEY}",
+        "GEMINI_MODEL": "gemini-2.5-flash-lite"
+      }
+    },
+    "graphify": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "graphifyy",
+        "--with",
+        "mcp",
+        "-m",
+        "graphify.serve",
+        "${workspace.path}/graphify-out/graph.json"
+      ]
+    },
+    "paymongo": {
+      "type": "http",
+      "url": "https://docs.paymongo.com/mcp"
+    },
+    "dart": {
+      "command": "dart",
+      "args": [
+        "mcp-server"
+      ]
+    }
+  }
+}

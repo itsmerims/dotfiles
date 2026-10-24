@@ -9,7 +9,7 @@ dotfiles/
 ├── install.ps1      # Setup script to link/copy configs to system
 ├── terminal/        # WezTerm configuration (.wezterm.lua)
 ├── powershell/      # PowerShell profile (Microsoft.PowerShell_profile.ps1)
-├── ai/              # CLAUDE.md, AGENTS.md, prompts, skills
+├── ai/              # CLAUDE.md, AGENTS.md, antigravity, opencode
 ├── design-system/   # Design guidelines, UI standards
 └── dev/             # Dev scripts and environment tools
 ```

@@ -24,10 +24,28 @@ if (-not (Test-Path $profileDir)) {
     New-Item -ItemType Directory -Path $profileDir -Force | Out-Null
 }
 
+# 3. Antigravity MCP Config
+$antigravityMcpSrc = Join-Path $dotfilesDir "ai\antigravity\mcp_config.json"
+$antigravityMcpDst = Join-Path $HOME ".gemini\config\mcp_config.json"
+
+# 4. OpenCode Configs
+$opencodeDir = Join-Path $HOME ".config\opencode"
+$opencodeJsonSrc = Join-Path $dotfilesDir "ai\opencode\opencode.json"
+$opencodeJsonDst = Join-Path $opencodeDir "opencode.json"
+$opencodeJsoncSrc = Join-Path $dotfilesDir "ai\opencode\opencode.jsonc"
+$opencodeJsoncDst = Join-Path $opencodeDir "opencode.jsonc"
+$opencodeCliSrc = Join-Path $dotfilesDir "ai\opencode\cli.json"
+$opencodeCliDst = Join-Path $opencodeDir "cli.json"
+
 function Deploy-Config($src, $dst, [switch]$useLink) {
     if (-not (Test-Path $src)) {
         Write-Warning "Source not found: $src"
         return
+    }
+
+    $dstParent = Split-Path -Parent $dst
+    if (-not (Test-Path $dstParent)) {
+        New-Item -ItemType Directory -Path $dstParent -Force | Out-Null
     }
 
     if (Test-Path $dst) {
@@ -47,5 +65,9 @@ function Deploy-Config($src, $dst, [switch]$useLink) {
 
 Deploy-Config -src $weztermSrc -dst $weztermDst -useLink:$Symlink
 Deploy-Config -src $profileSrc -dst $profileDst -useLink:$Symlink
+Deploy-Config -src $antigravityMcpSrc -dst $antigravityMcpDst -useLink:$Symlink
+Deploy-Config -src $opencodeJsonSrc -dst $opencodeJsonDst -useLink:$Symlink
+Deploy-Config -src $opencodeJsoncSrc -dst $opencodeJsoncDst -useLink:$Symlink
+Deploy-Config -src $opencodeCliSrc -dst $opencodeCliDst -useLink:$Symlink
 
 Write-Host "Dotfiles deployment complete." -ForegroundColor Cyan
