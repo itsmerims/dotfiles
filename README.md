@@ -6,9 +6,22 @@ Personal developer configs, shell profiles, AI agent guidelines, design system, 
 
 ```
 dotfiles/
-├── terminal/       # WezTerm and terminal configurations
-├── powershell/     # PowerShell $PROFILE and modules
-├── ai/             # claude.md, agents.md, system prompts, skills
-├── design-system/  # Design guidelines, tokens, UI standards
-└── dev/            # Dev scripts, tooling configs, environment templates
+├── install.ps1      # Setup script to link/copy configs to system
+├── terminal/        # WezTerm configuration (.wezterm.lua)
+├── powershell/      # PowerShell profile (Microsoft.PowerShell_profile.ps1)
+├── ai/              # CLAUDE.md, AGENTS.md, prompts, skills
+├── design-system/   # Design guidelines, UI standards
+└── dev/             # Dev scripts and environment tools
+```
+
+## Setup
+
+Deploy configurations to system paths:
+
+```powershell
+# Copy configs into place (with automatic backups)
+.\install.ps1
+
+# Or symlink (run PowerShell as Administrator)
+.\install.ps1 -Symlink
 ```
